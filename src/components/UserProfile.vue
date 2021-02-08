@@ -106,19 +106,19 @@ export default {
     .user-profile {
         display: grid;
         grid-template-columns: 1fr 3fr;
-        /* grid-gap: 50px; */
+        grid-gap: 50px;
         width: 100%;
         padding: 50px 5%;
 
         .user-profile_user-panel {
             display: flex;
             flex-direction: column;
-            margin-right: 50px;
+            // margin-right: 50px;
             padding: 20px;
             background-color: #fff;
             border-radius: 5px;
             border: 1px solid #dfe3e8;
-            /* margin-bottom: auto; */
+            margin-bottom: auto;
 
             h1 {
                 margin: 0;
@@ -141,6 +141,24 @@ export default {
               &.--exceeded {
                 color: red;
                 border-color: red;
+              }
+
+              textarea {
+                border: 1px solid #DFE3E8;
+                border-radius: 5px;
+              }
+
+              .user-profile_create-twoot-type {
+                padding: 10px 0;
+              }
+              button {
+                padding: 5px 20px;
+                margin: auto 0;
+                border-radius: 5px;
+                border: none;
+                background-color: teal;
+                color: white;
+                font-weight: bold;
               }
             }
         }
