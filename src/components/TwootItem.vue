@@ -38,13 +38,13 @@ export default {
         box-sizing: border-box;
         cursor: pointer;
         transition: all 0.25s ease;
-    }
 
-    .twoot-item:hover {
-        transform: scale(1.1, 1.1);
-    }
+        .twoot-item_user {
+            font-weight: bold;
+        }
 
-    .twoot-item_user {
-        font-weight: bold;
+        &:hover {
+            transform: scale(1.1, 1.1);
+        }
     }
 </style>
