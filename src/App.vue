@@ -30,38 +30,31 @@ export default {
 </script>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  
-  nav {
+    #app {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #2c3e50;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 15px 5%;
-    box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    background-color: teal;
-    color: white;
-    .navigation_logo {
-      font-weight: bold;
-      font-size: 24px;
-    }
-    .navigation_user {
-      font-weight: bold;
+    flex-direction: column;
+    min-height: 100vh;
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 5%;
+      box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.2),
+        0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      background-color: teal;
+      color: white;
+      .navigation_logo {
+        font-weight: bold;
+        font-size: 24px;
+      }
+      .navigation_user {
+        font-weight: bold;
+      }
     }
   }
-  
-  
-  
-  /* text-align: center; */
-}
-html {
-  background-color: #F3F5FA;  
-}
-
 </style>
