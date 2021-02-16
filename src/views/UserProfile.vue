@@ -2,77 +2,58 @@
  <div class="user-profile">
    <div class="user-profile_sidebar">
      <div class="user-profile_user-panel">
-         <h1 class="user-profile_username">@{{ user.username }}</h1>
-         <div class="user-profile_admin-badge" v-if="user.isAdmin">
+         <h1 class="user-profile_username">@{{ state.user.username }}</h1>
+         <h2>{{ userId }}</h2>
+         <div class="user-profile_admin-badge" v-if="state.user.isAdmin">
              Admin
          </div>
          <div class="user-profile_follower-count">
-             <strong>Followers: </strong>{{followers}}
+             <strong>Followers: </strong>{{ state.followers }}
          </div>
       </div>
       <CreateTwootPanel @add-twoot="addTwoot"/>
    </div>
      <div class="user-profile_twoots-wrapper">
          <TwootItem 
-            v-for="twoot in  user.twoots" 
+            v-for="twoot in state.user.twoots" 
             :key="twoot.id" 
-            :username="user.username" 
+            :username="state.user.username" 
             :twoot="twoot"
         />
      </div>
-<!--     
-  @{{ user.username }} - {{ fullName }}
-  
-  <button @click="followUser">
-    Follow
-  </button> -->
  </div>
 </template>
 
 <script>
-import TwootItem from "./TwootItem";
+import { reactive, computed } from 'vue';
+import { useRoute } from 'vue-router';
+import { users } from '../assets/users';
+import TwootItem from "../components/TwootItem";
 import CreateTwootPanel from "../components/CreateTwootPanel";
 
 export default {
   name: 'UserProfile',
   components: { CreateTwootPanel, TwootItem },
-  data () {
-    return {
-      followers: 0,
-      user: {
-        id: 1,
-        username: '_Trixas97',
-        firstname: 'Mike',
-        lastname: 'Trixas',
-        email: 'trixasmixas@gmail.com',
-        isAdmin: true,
-        twoots: [
-            {id: 1, content: 'First twoot'},
-            {id: 2, content: 'Second twoot'}
-        ]
-      }
-    }
-  },
-  computed: {
-    fullName() {
-      return `${this.user.firstname} ${this.user.lastname}`
-    },
+  setup() {
 
-    newTwootCharacterCount() {
-      return this.newTwootContent.length;
+    const route = useRoute();
+    const userId = computed( () => route.params.userId);
+
+    const state = reactive({
+      followers: 0,
+      user: users[userId.value - 1] || users[0]
+    })
+
+    function addTwoot(twoot){
+      state.user.twoots.unshift({id: state.user.twoots.length + 1, content: twoot});
     }
-  },
-  methods: {
-    followUser(){
-      this.followers++
-    },
-    
-    addTwoot(twoot){
-      this.user.twoots.unshift({id: this.user.twoots.length + 1, content: twoot});
+
+    return {
+      state,
+      addTwoot,
+      userId
     }
-  },
-  mounted() {
-    this.followUser();
+
   }
 }
 </script>
